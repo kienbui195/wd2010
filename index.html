@@ -1,13 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chúc mừng 20/10 ♥️ Hạnh</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20+1/10 vui vẻ ♥️ em Mèo</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    // 👇 Script làm chữ title chạy từ phải sang trái
+    const originalTitle = "     20+1/10 vui vẻ ♥️ bé Mèo            ";
+    let title = originalTitle;
+    const speed = 400; // tốc độ (ms)
+
+    function animateTitle() {
+      // Dịch 1 ký tự cuối lên đầu để tạo hiệu ứng "trượt"
+      title = title.slice(1) + title[0];
+      document.title = title;
+    }
+
+    setInterval(animateTitle, speed);
+  </script>
+</body>
+
 </html>

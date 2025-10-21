@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import Step1 from "../components/Step1";
 import Step2 from "../components/Step2";
+import HeartScene from "../components/HeartScene";
+import { useStep } from "../lib/store/useStep";
 
 const LoiChucPage = () => {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("Chúc em 20/10 thật nhiều niềm vui và hạnh phúc! 💐");
-  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [step, setStep] = useState<number>(0);
+  const { step, setStep } = useStep();
 
   // 👇 Auto play khi mount component
   useEffect(() => {
@@ -34,41 +32,29 @@ const LoiChucPage = () => {
         src="/music/vạn vật như muốn ta bên nhau.mp3"
         loop
         autoPlay
+        controls
+        muted
+        className="absolute top-3 right-3 z-50"
       />
 
       {/* ...phần nội dung cũ giữ nguyên... */}
 
-      <div className="absolute top-3 right-3">
-        <button
-          onClick={() => {
-            const audio = audioRef.current;
-            if (!audio) return;
-            if (isMuted) {
-              audio.play();
-            } else {
-              audio.pause();
-            }
-            setIsMuted(!isMuted);
-          }}
-          className="bg-pink-500 text-white px-3 py-1 rounded-full shadow text-sm hover:bg-pink-600">
-          {isMuted ? "🔈 Bật nhạc" : "🔇 Tắt nhạc"}
-        </button>
-      </div>
-
       {step === 0 && (
         <div className="py-[100px] p-6">
-          <h5 className="text-center text-pink-500 font-bold text-xl">Tặng nè</h5>
+          <p className="text-center text-pink-500 font-bold text-xl mb-10">Tặng nàng nè 🌹</p>
           <img
             alt="tang hoa cho be"
             src="/gifs/This Is For You GIF by Pudgy Penguins.gif"
             onClick={() => setStep(1)}
+            className="cursor-pointer"
           />
-          <p className="italic text-center text-pink-500">Chạm vào ảnh</p>
+          <p className="italic text-center text-pink-500">Chạm vào ảnh để tiếp tục</p>
         </div>
       )}
 
-      {step === 1 && <Step1 onClick={() => setStep(2)} />}
-      {step === 2 && <Step2 onClick={() => setStep(3)} />}
+      {step === 1 && <Step1 />}
+      {step === 2 && <Step2 />}
+      {step === 3 && <HeartScene />}
     </div>
   );
 };

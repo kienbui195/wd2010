@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../../components/ui/dialog";
+import { useStep } from "../../lib/store/useStep";
 
-const Step1 = ({ onClick }: { onClick?: () => void }) => {
+const Step1 = () => {
   const [open, setOpen] = useState(false);
+  const { setStep } = useStep();
 
   useEffect(() => {
     setTimeout(() => {
@@ -11,7 +13,9 @@ const Step1 = ({ onClick }: { onClick?: () => void }) => {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-no-repeat flex items-center justify-center relative" onClick={onClick}>
+    <div
+      className="w-full h-screen bg-no-repeat flex items-center justify-center relative"
+      onClick={() => setStep(2)}>
       <img
         alt="anh nen"
         className="size-full object-cover"
@@ -20,30 +24,32 @@ const Step1 = ({ onClick }: { onClick?: () => void }) => {
       <div className="absolute top-[100px] left-1/2 transform -translate-x-1/2 text-center bg-white shadow-lg rounded-lg px-2 py-1 text-xl w-[300px] text-pink-500 font-bold">
         Chúc mừng
         <br />
-        ngày phụ nữ Việt Nam
+        ngày của riêng cô gái của tui
         <br />
-        20/10
+        20+1/10
       </div>
       <Dialog
         open={open}
         onOpenChange={(val) => setOpen(val)}>
         <DialogContent className="transition-all transform">
           <DialogHeader>
-            <DialogTitle className="text-pink-600 text-2xl">Gửi em 🌹</DialogTitle>
+            <DialogTitle className="text-pink-600 text-center text-2xl animate__animated animate__rubberBand">
+              Gửi nàng 🌼
+            </DialogTitle>
           </DialogHeader>
           <div className="flex text-pink-500  flex-col items-center justify-center gap-4 text-center text-lg">
             <FadeInText
-              content="Hôm nay là 20/10 một ngày đặc biệt dành cho những người con gái đặc biệt."
+              content="Hôm nay là 20+1/10 một ngày đặc biệt dành cho những người con gái đặc biệt."
               className="animate__animated animate__delay-1s animate__fadeInDown"
             />
             <FadeInText
-              content="Em là một trong số đó! Bề ngoài em dù có trông tẻn tẻn, mát mát, rất nhiều năng lượng tươi vui nhưng cũng là người tình
-              cảm, sâu sắc luôn mang lại cho anh cảm giác ấm áp, dễ chịu."
+              content="Nàng là một trong số đó! Bề ngoài nàng dù có trông tẻn tẻn, mát mát, rất nhiều năng lượng tươi vui nhưng cũng là người tình
+              cảm, sâu sắc luôn mang lại cho tớ cảm giác ấm áp, dễ chịu."
               className="animate__animated animate__delay-2s animate__fadeInRight"
             />
             <FadeInText
-              content="Bấm vào đây để tiếp tục 💌"
-              className="italic animate__animated animate__delay-3s animate__fadeInUpBig"
+              content="Nàng ấn vào đây để tiếp tục 💌"
+              className="cursor-pointer italic animate__animated animate__delay-3s animate__fadeInUpBig"
             />
           </div>
         </DialogContent>

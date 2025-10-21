@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/chuc-mung-2010-Hanh-hap",
+    path: "/chuc-mung-2110-Hanh-hap",
     element: <LoiChucPage />,
   }
 ]);
