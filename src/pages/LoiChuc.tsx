@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import HeartScene from "../components/HeartScene";
 import Step1 from "../components/Step1";
 import Step2 from "../components/Step2";
-import HeartScene from "../components/HeartScene";
 import { useStep } from "../lib/store/useStep";
 
 const LoiChucPage = () => {

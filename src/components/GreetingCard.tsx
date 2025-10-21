@@ -7,7 +7,6 @@ export default function GreetingCard() {
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
-    const started = { v: false } as { v: boolean };
     const startedRef = ((window as any).__greeting_started__ ??= { v: false });
     // guard nội bộ (thông thường không cần, nhưng an toàn với double-run trong dev)
     if (startedRef.v) return;
